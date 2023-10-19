@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Single Page App</title>
+    <link rel="stylesheet" href="/static/css/index.css">
+</head>
+<body>
+    <div id="app">
+        <div id="data">
+            <div>
+                <span id="content">
+                </span>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="/static/js/index.js"></script>
+</body>
+</html>
+
+<script>
+window.onload = function () {
+    httpGetAsync()
+}
+
+function httpGetAsync()
+{
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open("GET", "https://localhost:7037/api/TestEndpoint", true);
+    xmlHttp.onload = function() {
+        if (xmlHttp.status === 200) {
+            const obj = JSON.parse(xmlHttp.responseText);
+            var spanItem = document.getElementById("content");
+            spanItem.innerHTML = obj.fact;
+        }
+    }
+    xmlHttp.send(null);
+}
+</script>

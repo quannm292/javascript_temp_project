@@ -1,2 +1,4 @@
 # project_test_1
-just change read me and test commit-push
+- this is how to run this app
+1: npm install express
+2: node server.js
